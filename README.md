@@ -1,2 +1,2 @@
 # ASF2405.github.io
-Sussy Darouse Chuck-E-Cheese Proposal
+This is for your dragon clicker game, Alex. Do it well.

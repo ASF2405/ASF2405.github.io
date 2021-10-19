@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <style>
+        /*Box graphics.*/
         div {
             height: 50px;
             width: 50px;
@@ -15,14 +16,20 @@
     </body>
 </html>
 <script>
+    //Speed and start.
     var Box = document.getElementById("Box")
     var x = 0
-    var y = 0
+    var speed = 5
     setInterval(update, 50)
+    //Movement perameters.
     function update(){
         Box.style.left= x + "px"
-        x=x+1
-        if(x===window.innerWidth){
-            x=-x
+         x=x+speed
+        if(x>=window.innerWidth-50){
+            speed=-speed
+        }
+        if(x<=0){
+            speed=-speed
+        }
     }
 </script> 

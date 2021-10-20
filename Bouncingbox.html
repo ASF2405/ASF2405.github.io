@@ -1,47 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <style>
-        /*Box graphics.*/
-        div {
-            height: 50px;
-            width: 50px;
-            background-color: red;
-            position:absolute;
-        }
-    </style>
-    <body>
-        <div id="Box">
-            
-        </div>
-    </body>
+<title>
+    The truth.
+</title>
+<style>
+    /*Box graphics.*/
+    div {
+        background-color: pink;
+        position: absolute;
+        vertical-align: middle;
+        white-space: nowrap;
+        border-style: dotted;
+        border-color: purple;
+
+    }
+
+    p {
+        color: magenta;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="Box">
+        <p>You're an A+</p>
+    </div>
+</body>
+
 </html>
 <script>
     //Speed and start.
     var Box = document.getElementById("Box")
+    var height = 100
+    var width = 200
+    var font = 100
     var x = 0
     var y = 0
-    var Horspeed = 5
-    var Verspeed = 10
-    setInterval(update, 50)
+    var Horspeed = 0.5
+    var Verspeed = 0.5
+    setInterval(update, 0.25)
     //Movement perameters.
-    function update(){
-        Box.style.left= x + "px"
-         x=x+Horspeed
-        if(x>=window.innerWidth-50){
-            Horspeed=-Horspeed
+    function update() {
+        
+        font = width/100
+        Box.style.fontSize = font + "em"
+        Box.style.width = width + "px"
+        Box.style.height = height + "px"
+        Box.style.left = x + "px"
+      
+        x = x + Horspeed
+        if (x > window.innerWidth - width) {
+            Horspeed = -Horspeed
+            
         }
-        if(x<=0){
-            Horspeed=-Horspeed
+        if (x < 0) {
+            Horspeed = -Horspeed
         }
-           Box.style.top= y + "px"
-         y=y+Verspeed
-        if(y>=window.innerHeight-50){
-            Verspeed=-Verspeed
+        Box.style.top = y + "px"
+        y = y + Verspeed
+        if (y > window.innerHeight - height) {
+            Verspeed = -Verspeed
         }
-        if(y<=0){
-            Verspeed=-Verspeed
+        if (y < 0) {
+            Verspeed = -Verspeed
         }
     }
 
-     
-</script> 
+
+</script>

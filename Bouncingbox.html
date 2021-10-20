@@ -19,17 +19,29 @@
     //Speed and start.
     var Box = document.getElementById("Box")
     var x = 0
-    var speed = 5
+    var y = 0
+    var Horspeed = 5
+    var Verspeed = 10
     setInterval(update, 50)
     //Movement perameters.
     function update(){
         Box.style.left= x + "px"
-         x=x+speed
+         x=x+Horspeed
         if(x>=window.innerWidth-50){
-            speed=-speed
+            Horspeed=-Horspeed
         }
         if(x<=0){
-            speed=-speed
+            Horspeed=-Horspeed
+        }
+           Box.style.top= y + "px"
+         y=y+Verspeed
+        if(y>=window.innerHeight-50){
+            Verspeed=-Verspeed
+        }
+        if(y<=0){
+            Verspeed=-Verspeed
         }
     }
+
+     
 </script> 

@@ -31,6 +31,7 @@
 <script>
     //Speed and start.
     var Box = document.getElementById("Box")
+    Box.addEventListener("click", BoxClick)
     var height = 100
     var width = 200
     var font = 100
@@ -66,5 +67,9 @@
         }
     }
 
+function BoxClick(){
+    Verspeed=Verspeed+1
+    Horspeed=Horspeed+1
+}
 
 </script>

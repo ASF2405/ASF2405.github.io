@@ -1,26 +1,21 @@
 <!DOCTYPE html>
-<script>
-    var coincount = 0;
-</script>
+
 <html>
 	<head>
-        <title>Empty Hoard</title>
+        <title>Hoard Clicker</title>
+        <style>
+            
+        </style>
     </head>
 	<body>
-        <a href=# onclick="add()"><img src="DragonCoinW.png"></a>
-        <br><br>
-        You got:
-        <input type="text" id="text" disabled style= text-align:center</input>
-        <script>
-            function add() {
-                coincount = coincount + 1;
-                document.getElementById('text').value = coincount;
-                document.title = coincount + " Shinies";
-            }
-        </script>
-        Coin
-        <br><br>
-
-        <button><a href="#" onClick="save()">Save</a></button>
+        <a href=# onclick="add()"><img id="MainCoin" src="DragonCoinW.png"></a>
     </body>
+
 </html>
+<script>
+    var CoinCount = 0
+    document.getElementById("MainCoin").addEventListener("click", CoinClick)
+    function CoinClick(){
+        CoinCount=CoinCount+1
+    }
+</script>

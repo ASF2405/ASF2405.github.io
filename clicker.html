@@ -9,13 +9,23 @@
     </head>
 	<body>
         <a href=# onclick="add()"><img id="MainCoin" src="DragonCoinW.png"></a>
+        <div id="CoinScore">
+            You have coins
+        </div>
     </body>
 
 </html>
 <script>
     var CoinCount = 0
+    setInterval(idle, 500)
+    function idle(){
+        CoinCount=CoinCount+1
+        document.getElementById("CoinScore").innerText="You have "+CoinCount+" coins!"
+    }
     document.getElementById("MainCoin").addEventListener("click", CoinClick)
     function CoinClick(){
         CoinCount=CoinCount+1
+        document.getElementById("CoinScore").innerText="You have "+CoinCount+" coins!"
     }
+
 </script>

@@ -4,7 +4,10 @@
 	<head>
         <title>Hoard Clicker</title>
         <style>
-            
+            #Upgrade{
+                text-align: center;
+                cursor: pointer;
+            }
         </style>
     </head>
 	<body>
@@ -12,6 +15,9 @@
         <div id="CoinScore">
             You have coins
         </div>
+        <button id="Upgrade">
+            Enslavement
+        </button>
     </body>
 
 </html>
@@ -27,5 +33,11 @@
         CoinCount=CoinCount+1
         document.getElementById("CoinScore").innerText="You have "+CoinCount+" coins!"
     }
+
+    function UpgradeCoin(){
+        CoinCount=CoinCount+1
+    }
+
+    document.getElementById("Upgrade").addEventListener("click", UpgradeCoin)
 
 </script>

@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-        <title>Hoard Clicker</title>
-        <style>
-            #Upgrade{
-                text-align: center;
-                cursor: pointer;
-            }
-        </style>
-    </head>
-	<body>
-        <a href=# onclick="add()"><img id="MainCoin" src="DragonCoinW.png"></a>
-        <div id="CoinScore">
-            You have coins
-        </div>
-        <button id="Upgrade">
-            Enslavement
-        </button>
-    </body>
+
+<head>
+    <title>Hoard Clicker</title>
+    <style>
+        #Upgrade {
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="MainCoin" src="DragonCoinW.png">
+    <div id="CoinScore">
+        You have coins
+    </div>
+    <button id="UpgradeCost">
+        Workers | 20
+    </button>
+</body>
 
 </html>
 <script>
     var CoinCount = 0
-    setInterval(idle, 500)
-    function idle(){
-        CoinCount=CoinCount+1
-        document.getElementById("CoinScore").innerText="You have "+CoinCount+" coins!"
-    }
+    var ClicksPerSec = 0
+    var UpgradeCost = 20
+    setInterval(Autoclick, 500)
+    document.getElementById("UpgradeCost").addEventListener("click", UpgradeClicks)
+
     document.getElementById("MainCoin").addEventListener("click", CoinClick)
-    function CoinClick(){
-        CoinCount=CoinCount+1
-        document.getElementById("CoinScore").innerText="You have "+CoinCount+" coins!"
+    function Autoclick() {
+        CoinCount = CoinCount + ClicksPerSec
+        document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
     }
 
-    function UpgradeCoin(){
-        CoinCount=CoinCount+1
+    function CoinClick() {
+        CoinCount = CoinCount + 1
+        document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
     }
 
-    document.getElementById("Upgrade").addEventListener("click", UpgradeCoin)
+    function UpgradeClicks() {
+        if(CoinCount >= UpgradeCost){
+            CoinCount = CoinCount - UpgradeCost
+            UpgradeCost = UpgradeCost + 10
+            ClicksPerSec = ClicksPerSec + 1
+            document.getElementById("UpgradeCost").innerText = "Workers | " +UpgradeCost       
+        }
+    }
 
 </script>

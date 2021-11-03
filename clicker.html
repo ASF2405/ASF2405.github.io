@@ -9,6 +9,38 @@
             text-align: center;
             cursor: pointer;
         }
+        #MainCoin{
+            animation-name: CoinSpin;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes CoinSpin{
+            12.5%{
+                transform: rotate(45deg);
+            }
+            25%{
+                transform: rotate(90deg);
+            }
+            37.5%{
+                transform: rotate(135deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            62.5%{
+                transform: rotate(225deg);
+            }
+            75%{
+                transform: rotate(270deg);
+            }
+            87.5%{
+                transform: rotate(315deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -48,6 +80,10 @@
             ClicksPerSec = ClicksPerSec + 1
             document.getElementById("UpgradeCost").innerText = "Workers | " +UpgradeCost       
         }
+    }
+
+    function ClickSpin() {
+        document.getElementById("MainCoin").addEventListener
     }
 
 </script>

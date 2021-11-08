@@ -5,11 +5,15 @@
 <head>
     <title>Hoard Clicker</title>
     <style>
-        #Upgrade {
-            text-align: center;
+        #WorkersCost {
             cursor: pointer;
         }
+        #SCoinCost {
+            cursor: pointer;
+        }
+
         #MainCoin{
+            cursor: pointer;
             animation-name: CoinSpin;
             animation-duration: 1s;
             animation-timing-function: linear;
@@ -45,45 +49,69 @@
 </head>
 
 <body>
+    
     <img id="MainCoin" src="DragonCoinW.png">
+    
     <div id="CoinScore">
         You have coins
     </div>
-    <button id="UpgradeCost">
+    <button id="WorkersCost">
         Workers | 20
+    </button>
+    <br>
+    <button id="SCoinCost">
+        Shinier Coins | 50
     </button>
 </body>
 
 </html>
 <script>
+    //Variables
     var CoinCount = 0
     var ClicksPerSec = 0
-    var UpgradeCost = 20
-    setInterval(Autoclick, 500)
-    document.getElementById("UpgradeCost").addEventListener("click", UpgradeClicks)
+    var WorkersCost = 20
+    var SCoinCost = 50
 
-    document.getElementById("MainCoin").addEventListener("click", CoinClick)
+    //Misc. Functions
+    setInterval(Autoclick, 500)
     function Autoclick() {
-        CoinCount = CoinCount + ClicksPerSec
+        CoinCount = Math.floor(CoinCount + ClicksPerSec)
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
     }
-
     function CoinClick() {
         CoinCount = CoinCount + 1
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
     }
 
-    function UpgradeClicks() {
-        if(CoinCount >= UpgradeCost){
-            CoinCount = CoinCount - UpgradeCost
-            UpgradeCost = UpgradeCost + 10
+    function CanAfford(){
+        document.getElementById("UpgradeClicks")
+    }
+
+    //Button Listeners
+    document.getElementById("WorkersCost").addEventListener("click", WorkersBtn)
+    document.getElementById("MainCoin").addEventListener("click", CoinClick)
+    document.getElementById("SCoinCost").addEventListener("click", SCoinBtn)
+
+    //Upgrades
+    function WorkersBtn() {
+        if(CoinCount >= WorkersCost){
+            CoinCount = CoinCount - WorkersCost
+            WorkersCost = WorkersCost + 10
             ClicksPerSec = ClicksPerSec + 1
-            document.getElementById("UpgradeCost").innerText = "Workers | " +UpgradeCost       
+            document.getElementById("WorkersCost").innerText = "Workers | " +WorkersCost       
         }
     }
 
-    function ClickSpin() {
-        document.getElementById("MainCoin").addEventListener
+    function SCoinBtn() {
+        if(CoinCount >= SCoinCost){
+            CoinCount = CoinCount - SCoinCost
+            SCoinCost = Math.floor(SCoinCost * 1.5)
+            if(ClicksPerSec === 0){
+                ClicksPerSec = ClicksPerSec + 1
+            }
+            ClicksPerSec = ClicksPerSec * 1.5
+            document.getElementById("SCoinCost").innerText = "Shinier Coins | " +SCoinCost
+        }
     }
 
 </script>

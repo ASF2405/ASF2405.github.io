@@ -18,7 +18,11 @@
             animation-duration: 1s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            
+            
+            animation-name: ClickPulse
         }
+
         @keyframes CoinSpin{
             12.5%{
                 transform: rotate(45deg);
@@ -66,25 +70,28 @@
 
 </html>
 <script>
-    //Variables
+    //Misc. Variables
     var CoinCount = 0
     var ClicksPerSec = 0
+
+    //Cost Variables
     var WorkersCost = 20
     var SCoinCost = 50
+
+    //Actual thing variables
+    var Workers = 0
+    var SCoin = 0
 
     //Misc. Functions
     setInterval(Autoclick, 500)
     function Autoclick() {
         CoinCount = Math.floor(CoinCount + ClicksPerSec)
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
+        document.getElementById("")
     }
     function CoinClick() {
         CoinCount = CoinCount + 1
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
-    }
-
-    function CanAfford(){
-        document.getElementById("UpgradeClicks")
     }
 
     //Button Listeners
@@ -96,6 +103,7 @@
     function WorkersBtn() {
         if(CoinCount >= WorkersCost){
             CoinCount = CoinCount - WorkersCost
+            Workers = Workers + 1
             WorkersCost = WorkersCost + 10
             ClicksPerSec = ClicksPerSec + 1
             document.getElementById("WorkersCost").innerText = "Workers | " +WorkersCost       
@@ -105,6 +113,7 @@
     function SCoinBtn() {
         if(CoinCount >= SCoinCost){
             CoinCount = CoinCount - SCoinCost
+            SCoin = SCoin + 1
             SCoinCost = Math.floor(SCoinCost * 1.5)
             if(ClicksPerSec === 0){
                 ClicksPerSec = ClicksPerSec + 1

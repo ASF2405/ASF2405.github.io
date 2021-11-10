@@ -5,12 +5,10 @@
 <head>
     <title>Hoard Clicker</title>
     <style>
-        #WorkersCost {
-            cursor: pointer;
-        }
-
-        #SCoinCost {
-            cursor: pointer;
+        #Background{
+            height: 100%;
+            width: 100%;
+            position: relative;
         }
 
         #MainCoin {
@@ -19,6 +17,20 @@
             animation-duration: 1s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+        }
+
+        #UpgradesBox {
+            position:relative;
+            float: right;
+            border-color: purple;
+        }
+
+        #WorkersCost {
+            cursor: pointer;
+        }
+
+        #SCoinCost {
+            cursor: pointer;
         }
 
         @keyframes CoinSpin {
@@ -60,15 +72,22 @@
 
 <body>
 
-    <img id="MainCoin" src="DragonCoinW.png">
+    <div id="Background">
+    <div id="CoinBox">
+        <img id="MainCoin" src="DragonCoinW.png">
+    </div>
 
     <div id="CoinScore">
         You have coins
     </div>
     <div id="UpgradesBox">
+        Upgrades
+        <br>
+        <br>
         <button id="WorkersCost">Workers | 20</button>
         <br>
         <button id="SCoinCost">Shinier Coins | 50</button>
+    </div>
     </div>
 </body>
 

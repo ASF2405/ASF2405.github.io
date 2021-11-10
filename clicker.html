@@ -8,44 +8,50 @@
         #WorkersCost {
             cursor: pointer;
         }
+
         #SCoinCost {
             cursor: pointer;
         }
 
-        #MainCoin{
+        #MainCoin {
             cursor: pointer;
             animation-name: CoinSpin;
             animation-duration: 1s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
-            
-            
-            animation-name: ClickPulse
         }
 
-        @keyframes CoinSpin{
-            12.5%{
+        @keyframes CoinSpin {
+            12.5% {
                 transform: rotate(45deg);
             }
-            25%{
+
+            25% {
                 transform: rotate(90deg);
             }
-            37.5%{
+
+            37.5% {
                 transform: rotate(135deg);
             }
-            50%{
+
+            50% {
                 transform: rotate(180deg);
+
             }
-            62.5%{
+
+            62.5% {
                 transform: rotate(225deg);
             }
-            75%{
+
+            75% {
                 transform: rotate(270deg);
             }
-            87.5%{
+
+            87.5% {
                 transform: rotate(315deg);
             }
-            100%{
+
+            100% {
                 transform: rotate(360deg);
             }
         }
@@ -53,19 +59,17 @@
 </head>
 
 <body>
-    
+
     <img id="MainCoin" src="DragonCoinW.png">
-    
+
     <div id="CoinScore">
         You have coins
     </div>
-    <button id="WorkersCost">
-        Workers | 20
-    </button>
-    <br>
-    <button id="SCoinCost">
-        Shinier Coins | 50
-    </button>
+    <div id="UpgradesBox">
+        <button id="WorkersCost">Workers | 20</button>
+        <br>
+        <button id="SCoinCost">Shinier Coins | 50</button>
+    </div>
 </body>
 
 </html>
@@ -81,17 +85,42 @@
     //Actual thing variables
     var Workers = 0
     var SCoin = 0
+    var coinWidth = 512
+    var breathingVelocity = 3
+    var breathingBool = false
 
     //Misc. Functions
     setInterval(Autoclick, 500)
     function Autoclick() {
         CoinCount = Math.floor(CoinCount + ClicksPerSec)
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
-        document.getElementById("")
     }
+
+    setInterval(coinBreathe, 1)
+
+    function coinBreathe() {
+        if (breathingBool === true) {
+
+
+            breathingVelocity = breathingVelocity - .1 //this is the friction slowing down the breathing
+            coinWidth = coinWidth - breathingVelocity
+            document.getElementById("MainCoin").style.width = coinWidth + "px"
+            document.getElementById("MainCoin").style.height = coinWidth + "px"
+        }
+
+        if (coinWidth >= 512) {
+            breathingBool = false
+            breathingVelocity = 3
+            coinWidth = 512
+        }
+
+
+    }
+
     function CoinClick() {
         CoinCount = CoinCount + 1
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
+        breathingBool = true
     }
 
     //Button Listeners
@@ -101,25 +130,37 @@
 
     //Upgrades
     function WorkersBtn() {
-        if(CoinCount >= WorkersCost){
+        if (CoinCount >= WorkersCost) {
             CoinCount = CoinCount - WorkersCost
             Workers = Workers + 1
             WorkersCost = WorkersCost + 10
             ClicksPerSec = ClicksPerSec + 1
-            document.getElementById("WorkersCost").innerText = "Workers | " +WorkersCost       
+            if (Workers === 10) {
+                WorkersCost = Math.floor(WorkersCost * 1.5)
+            }
+            if (Workers === 20) {
+                WorkersCost = Math.floor(WorkersCost * 2.5)
+            }
+            document.getElementById("WorkersCost").innerText = "Workers | " + WorkersCost
         }
     }
 
     function SCoinBtn() {
-        if(CoinCount >= SCoinCost){
+        if (CoinCount >= SCoinCost) {
             CoinCount = CoinCount - SCoinCost
             SCoin = SCoin + 1
             SCoinCost = Math.floor(SCoinCost * 1.5)
-            if(ClicksPerSec === 0){
+            if (ClicksPerSec === 0) {
                 ClicksPerSec = ClicksPerSec + 1
             }
+            if (SCoin === 10) {
+                SCoinCost = Math.floor(SCoinCost * 3.5)
+            }
+            if (Scoin === 20) {
+                SCoinCost = Math.floor(SCoinCost * 4.5)
+            }
             ClicksPerSec = ClicksPerSec * 1.5
-            document.getElementById("SCoinCost").innerText = "Shinier Coins | " +SCoinCost
+            document.getElementById("SCoinCost").innerText = "Shinier Coins | " + SCoinCost
         }
     }
 

@@ -20,9 +20,13 @@
         }
 
         #UpgradesBox {
-            position:relative;
-            float: right;
+            position:relative; 
+            border-style: double;
             border-color: purple;
+        }
+
+        .UpgradesDivider {
+            border-style: dotted;
         }
 
         #WorkersCost {
@@ -67,6 +71,10 @@
                 transform: rotate(360deg);
             }
         }
+
+        table, td {
+  border: 
+}
     </style>
 </head>
 
@@ -80,14 +88,27 @@
     <div id="CoinScore">
         You have coins
     </div>
-    <div id="UpgradesBox">
-        Upgrades
+      
         <br>
-        <br>
-        <button id="WorkersCost">Workers | 20</button>
-        <br>
-        <button id="SCoinCost">Shinier Coins | 50</button>
+        
     </div>
+    <table id="UpgradesBox">
+        <tr>
+            <th>
+                Upgrades
+            </th>
+        </tr>
+        <tr class="ButtonDivider">
+            <td>
+                <button id="WorkersCost">Workers | 20</button>
+            </td>
+        </tr>
+        <tr class="ButtonDivider">
+            <td>
+            <button id="SCoinCost">Shinier Coins | 50</button>
+            </td>
+        </tr>
+    </table>
     </div>
 </body>
 

@@ -5,7 +5,12 @@
 <head>
     <title>Hoard Clicker</title>
     <style>
-        #Background{
+        body {
+            background-image: url("Ice-cave.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #Background {
             height: 100%;
             width: 100%;
             position: relative;
@@ -17,16 +22,17 @@
             animation-duration: 1s;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+            position: absolute;
         }
 
         #UpgradesBox {
-            position:relative; 
+            position: relative;
             border-style: double;
             border-color: purple;
         }
 
-        .UpgradesDivider {
-            border-style: dotted;
+        #CoinScore{
+            padding-top: 512px;
         }
 
         #WorkersCost {
@@ -72,43 +78,43 @@
             }
         }
 
-        table, td {
-  border: 
-}
+        table,
+        td {
+            border:
+        }
     </style>
 </head>
 
 <body>
+        <div id="CoinBox">
+            <img id="MainCoin" src="DragonCoinW.png">
+        </div>
 
-    <div id="Background">
-    <div id="CoinBox">
-        <img id="MainCoin" src="DragonCoinW.png">
-    </div>
+        <div id="CoinScore">
+            You have coins
+        </div>
 
-    <div id="CoinScore">
-        You have coins
-    </div>
-      
         <br>
-        
+
+
+        <table id="UpgradesBox">
+            <tr>
+                <th>
+                    Upgrades
+                </th>
+            </tr>
+            <tr class="ButtonDivider">
+                <td>
+                    <button id="WorkersCost">Workers | 20</button>
+                </td>
+            </tr>
+            <tr class="ButtonDivider">
+                <td>
+                    <button id="SCoinCost">Shinier Coins | 50</button>
+                </td>
+            </tr>
+        </table>
     </div>
-    <table id="UpgradesBox">
-        <tr>
-            <th>
-                Upgrades
-            </th>
-        </tr>
-        <tr class="ButtonDivider">
-            <td>
-                <button id="WorkersCost">Workers | 20</button>
-            </td>
-        </tr>
-        <tr class="ButtonDivider">
-            <td>
-            <button id="SCoinCost">Shinier Coins | 50</button>
-            </td>
-        </tr>
-    </table>
     </div>
 </body>
 

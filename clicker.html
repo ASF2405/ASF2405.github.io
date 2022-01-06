@@ -23,12 +23,16 @@
             animation-timing-function: linear;
             animation-iteration-count: infinite;
             position: absolute;
+            height: 170.66px;
+            width: 170.66px;
+            
         }
 
         #UpgradesBox {
             position: relative;
             border-style: double;
             border-color: purple;
+            background-color: grey;
         }
 
         #CoinScore{
@@ -131,7 +135,7 @@
     //Actual thing variables
     var Workers = 0
     var SCoin = 0
-    var coinWidth = 512
+    var coinWidth = 170.66
     var breathingVelocity = 3
     var breathingBool = false
 
@@ -154,10 +158,10 @@
             document.getElementById("MainCoin").style.height = coinWidth + "px"
         }
 
-        if (coinWidth >= 512) {
+        if (coinWidth >= 170.66) {
             breathingBool = false
             breathingVelocity = 3
-            coinWidth = 512
+            coinWidth = 170.66
         }
 
 
@@ -168,6 +172,8 @@
         document.getElementById("CoinScore").innerText = "You have " + CoinCount + " coins!"
         breathingBool = true
     }
+
+
 
     //Button Listeners
     document.getElementById("WorkersCost").addEventListener("click", WorkersBtn)

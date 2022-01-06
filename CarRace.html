@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#Scone {
+    
+    height: 50px;
+    width: 100px;
+    position:absolute;
+}
+
+#Beans {
+    top:80px;
+    height: 50px;
+    width: 100px;
+    position:absolute;
+
+}
+
+</style>
+
+</head>
+
+<body>
+<div><img id="Scone" src="Scone.png"></div>
+<div><img id="Beans" src="CoffeeBeans.png"></div>
+</body>
+
+<script>
+var Scone=document.getElementById("Scone")
+var Beans=document.getElementById("Beans")
+
+
+document.addEventListener("keydown",keydown)
+function keydown(e){
+    if(e.key==="a"){
+        var x = x+10
+        Scone.style.left=x+"px"
+    }
+}
+
+document.addEventListener("click",click)
+function click(){
+    
+}
+
+</script>
+</html>

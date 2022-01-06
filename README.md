@@ -1,2 +1,2 @@
 # ASF2405.github.io
-This is for your dragon clicker game, Alex. Do it well.
+This is a whole menagerie of strangeness.

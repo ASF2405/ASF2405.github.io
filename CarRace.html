@@ -30,18 +30,22 @@
 var Scone=document.getElementById("Scone")
 var Beans=document.getElementById("Beans")
 
-
-document.addEventListener("keydown",keydown)
-function keydown(e){
+document.addEventListener("keyup",keypress)
+var x = 0
+var y = 0
+function keypress(e){
     if(e.key==="a"){
-        var x = x+10
+        x = x+10
         Scone.style.left=x+"px"
+    }
+    if(e.key==="l"){
+            y = y+10
+        Beans.style.left=y+"px"
     }
 }
 
-document.addEventListener("click",click)
-function click(){
-    
+if(x > window.innerWidth - (100 + "px")){
+    alert("Scone wins!")
 }
 
 </script>

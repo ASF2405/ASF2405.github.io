@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<p id="Timer"></p>
 <div><img id="Scone" src="Scone.png"></div>
 <div><img id="Beans" src="CoffeeBeans.png"></div>
 </body>
@@ -29,20 +30,37 @@
 <script>
 var Scone=document.getElementById("Scone")
 var Beans=document.getElementById("Beans")
-
-document.addEventListener("keyup",keypress)
+var Time = 0
 var x = 0
 var y = 0
+var speed = x
+function TimeCount(){
+    Time = Time + 1
+    document.getElementById("Timer").innerHTML = "Time Elapsed: " + Time
+}
+
+setInterval(TimeCount, 1000);
+
+document.addEventListener("keyup",keypress)
+
+function Acceleration(){
+    x = x + speed;
+    Scone.style.left=x+"px";
+    y = y + speed;
+    Beans.style.left=y+"px";
+}
+
+setInterval(Acceleration, 10);
+
 function keypress(e){
     if(e.key==="a"){
-        x = x+10
-        Scone.style.left=x+"px"
+        speed = speed + 1;
     }
     if(e.key==="l"){
-            y = y+10
-        Beans.style.left=y+"px"
+            
     }
 }
+
 
 if(x > window.innerWidth - (100 + "px")){
     alert("Scone wins!")

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <canvas id="canvas" width="window.innerWidth" height="window.innerHeight"></canvas>
+</body>
+
+</html>
+<script>
+    var Radius = []
+    var x = []
+    var y = []
+    var Horspeed = []
+    var Verspeed = []
+    var canvas = document.getElementById("canvas")
+    var ctx = canvas.getContext("2d")
+
+    for(i=0; i<1000; i=i+1){
+            x.push(Math.random()*100)
+            y.push(Math.random()*100)
+            Horspeed.push(Math.random()*10)
+            Verspeed.push(Math.random()*10)
+            Radius.push(Math.random()*9+1)
+    }
+
+    setInterval(Movement, 50)
+
+    document.getElementById("canvas", Keypress)
+
+    document.addEventListener("keyup", Keypress)
+
+    function Keypress(e) {
+        if (e.key === "a") {
+            Horspeed[i] = Horspeed[i] + 1
+            Verspeed[i] = Verspeed[i] + 1
+
+            if (Horspeed[i] >= 0) {
+                Horspeed[i] = Horspeed[i] + 1
+            }
+            if (Horspeed[i] < 0) {
+                Horspeed[i] = Horspeed[i] - 1
+            }
+            if (Verspeed[i] >= 0) {
+                Verspeed[i] = Verspeed[i] + 1
+            }
+            if (Verspeed[i] < 0) {
+                Verspeed[i] = Verspeed[i] - 1
+            }
+        }
+    }
+
+    function Movement() {
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        for (var i = 0; i < 3; i = i + 1) {
+            ctx.beginPath()
+            ctx.arc(x[i], y[i], Radius[i], 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.fillStyle = "hsl(" + Math.floor(+Math.random() * 360) + ",100%,50%)"
+            x[i] = x[i] + Horspeed[i]
+            y[i] = y[i] + Verspeed[i]
+            if (x[i] >= canvas.width - Radius[i]) {
+                Horspeed[i] = -Horspeed[i]
+            }
+            if (x[i] <= 0 + Radius[i]) {
+                Horspeed[i] = -Horspeed[i]
+            }
+            if (y[i] >= canvas.height - Radius[i]) {
+                Verspeed[i] = -Verspeed[i]
+            }
+            if (y[i] <= 0 + Radius[i]) {
+                Verspeed[i] = -Verspeed[i]
+            }
+        }
+    }
+</script>

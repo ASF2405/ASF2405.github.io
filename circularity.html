@@ -18,14 +18,22 @@
     var canvas = document.getElementById("canvas")
     var ctx = canvas.getContext("2d")
 
-    for(i=0; i<1000; i=i+1){
-            x.push(Math.random()*100)
-            y.push(Math.random()*100)
-            Horspeed.push(Math.random()*10)
-            Verspeed.push(Math.random()*10)
-            Radius.push(Math.random()*9+1)
+    for (i = 0; i < 1; i = i + 1) {
+        x.push(Math.random() * 100)
+        y.push(Math.random() * 100)
+        Horspeed.push(Math.random() * 8 + 2)
+        Verspeed.push(Math.random() * 8 + 2)
+        Radius.push(Math.random() * 9 + 1)
     }
+    canvas.addEventListener("click", CircleAdd)
 
+    function CircleAdd(event) {
+        x.push(event.clientX)
+        y.push(event.clientY)
+        Horspeed.push(Math.random() * 8 + 2)
+        Verspeed.push(Math.random() * 8 + 2)
+        Radius.push(Math.random() * 9 + 1)
+    }
     setInterval(Movement, 50)
 
     document.getElementById("canvas", Keypress)
@@ -34,20 +42,22 @@
 
     function Keypress(e) {
         if (e.key === "a") {
-            Horspeed[i] = Horspeed[i] + 1
+            /* Horspeed[i] = Horspeed[i] + 1
             Verspeed[i] = Verspeed[i] + 1
-
-            if (Horspeed[i] >= 0) {
-                Horspeed[i] = Horspeed[i] + 1
-            }
-            if (Horspeed[i] < 0) {
-                Horspeed[i] = Horspeed[i] - 1
-            }
-            if (Verspeed[i] >= 0) {
-                Verspeed[i] = Verspeed[i] + 1
-            }
-            if (Verspeed[i] < 0) {
-                Verspeed[i] = Verspeed[i] - 1
+            */
+            for (var i = 0; i < Horspeed.length; i++) {
+                if (Horspeed[i] >= 0) {
+                    Horspeed[i] = Horspeed[i] + 1
+                }
+                if (Horspeed[i] < 0) {
+                    Horspeed[i] = Horspeed[i] - 1
+                }
+                if (Verspeed[i] >= 0) {
+                    Verspeed[i] = Verspeed[i] + 1
+                }
+                if (Verspeed[i] < 0) {
+                    Verspeed[i] = Verspeed[i] - 1
+                }
             }
         }
     }
@@ -55,7 +65,7 @@
     function Movement() {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        for (var i = 0; i < 3; i = i + 1) {
+        for (var i = 0; i < x.length; i = i + 1) {
             ctx.beginPath()
             ctx.arc(x[i], y[i], Radius[i], 0, 2 * Math.PI)
             ctx.fill()
@@ -76,4 +86,6 @@
             }
         }
     }
+
+
 </script>

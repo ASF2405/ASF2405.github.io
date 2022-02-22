@@ -42,9 +42,6 @@
 
     function Keypress(e) {
         if (e.key === "a") {
-            /* Horspeed[i] = Horspeed[i] + 1
-            Verspeed[i] = Verspeed[i] + 1
-            */
             for (var i = 0; i < Horspeed.length; i++) {
                 if (Horspeed[i] >= 0) {
                     Horspeed[i] = Horspeed[i] + 1
@@ -63,9 +60,22 @@
     }
 
     function Movement() {
-
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         for (var i = 0; i < x.length; i = i + 1) {
+            for (var j = 0; j < x.length; j = j + 1) {
+
+                if (i !== j) {
+                    if (Math.sqrt((Math.pow(x[i] - x[j], 2) + (Math.pow(y[i] - y[j], 2)))) < Radius[i] + Radius[j]) {
+                        var Tempx = Horspeed[i]
+                        var Tempy = Verspeed[i]
+                        Horspeed[i] = Horspeed[j]
+                        Horspeed[j] = Tempx
+                        Verspeed[i] = Verspeed[j]
+                        Verspeed[j] = Tempy
+                    }
+
+                }
+            }
             ctx.beginPath()
             ctx.arc(x[i], y[i], Radius[i], 0, 2 * Math.PI)
             ctx.fill()

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #Sprite {
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <img id="Sprite" src="NewPiskel.png"></img>
+    <canvas id="mycanvas" width="window.innerWidth" height="window.innerHeight"></canvas>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        const myCanvas = document.getElementById('mycanvas');
+        const ctx = myCanvas.getContext('2d');
+        var img = document.getElementById("Sprite")
+        setInterval(Animoot, 50)
+
+        var sy = 0
+        function Animoot() {
+        if(sy === 0){
+            sy = sy + 32
+        } 
+        if (sy === 64{
+            ctx.clearRect(0,0,0,0)
+            sy = sy - 32
+        }
+
+            ctx.drawImage(img, 0, sy, 32, 32, 0, 0, 32, 32)
+            // ctx.drawImage(img, 0, 32, 64, 32, 0, 0, 64, 32)
+            // ctx.drawImage(img, 0, 64, 32, 64, 0, 0, 32, 64)
+            // ctx.drawImage(img, 0, 86, 64, 64, 0, 0, 64, 64)
+            // ctx.drawImage(img, 0, 128, 32, 96, 0, 0, 32, 96)
+        }
+    }
+</script>

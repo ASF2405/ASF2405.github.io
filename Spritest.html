@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <img id="Sprite" src="NewPiskel.png"></img>
+    <img id="Sprite" src="Pkmn.png"></img>
     <canvas id="mycanvas" width="window.innerWidth" height="window.innerHeight"></canvas>
 </body>
 
@@ -23,19 +23,23 @@
         var img = document.getElementById("Sprite")
         setInterval(Animoot, 50)
 
-        var sx = [0, 32, 0, 32, 0]
-        var sy = [0, 0, 32, 32, 64]
+        var sx = [30, 90, 150]
+        var sy = [40, 40, 40]
+        var frameIndex = 0
         var dx = 0
         var x = 1
         var y = 1
 
         function Animoot() {
-            dx = dx + 1
-            for (i = 0; i < 5; i = i + 1) {
-                ctx.drawImage(img, sx[i], sy[i], 32, 32, dx, 0, 32, 32)
+            ctx.clearRect(0, 0, 2000, 2000)
+            
+            ctx.drawImage(img, sx[frameIndex], sy[frameIndex], 60, 60, dx, 0, 32, 32)
+            frameIndex = frameIndex + 1
+            if(frameIndex > 3){
+                frameIndex = 0;
+                dx = dx + 1
             }
 
-            ctx.clearRect(0, 0, 2000, 2000)
             // ctx.drawImage(img, 0, 32, 64, 32, 0, 0, 64, 32)
             // ctx.drawImage(img, 0, 64, 32, 64, 0, 0, 32, 64)
             // ctx.drawImage(img, 0, 86, 64, 64, 0, 0, 64, 64)
